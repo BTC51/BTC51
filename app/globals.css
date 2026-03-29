@@ -1,0 +1,257 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* BTC51 Cinematic Theme */
+  --btc-black: #000000;
+  --btc-white: #ffffff;
+  --btc-green: #00ff88;
+  --btc-amber: #ffcc66;
+  --btc-gold: #d4af37;
+  --btc-gray: #1a1a1a;
+  --btc-dim: #666666;
+  
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #0a0a0a;
+  --card-foreground: #ffffff;
+  --popover: #0a0a0a;
+  --popover-foreground: #ffffff;
+  --primary: #00ff88;
+  --primary-foreground: #000000;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #ffffff;
+  --muted: #1a1a1a;
+  --muted-foreground: #666666;
+  --accent: #ffcc66;
+  --accent-foreground: #000000;
+  --destructive: #ff4444;
+  --destructive-foreground: #ffffff;
+  --border: #222222;
+  --input: #1a1a1a;
+  --ring: #00ff88;
+  --radius: 0px;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #0a0a0a;
+  --card-foreground: #ffffff;
+  --popover: #0a0a0a;
+  --popover-foreground: #ffffff;
+  --primary: #00ff88;
+  --primary-foreground: #000000;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #ffffff;
+  --muted: #1a1a1a;
+  --muted-foreground: #666666;
+  --accent: #ffcc66;
+  --accent-foreground: #000000;
+  --destructive: #ff4444;
+  --destructive-foreground: #ffffff;
+  --border: #222222;
+  --input: #1a1a1a;
+  --ring: #00ff88;
+}
+
+@theme inline {
+  --font-sans: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  --font-mono: var(--font-mono), 'JetBrains Mono', monospace;
+  --font-serif: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  
+  --color-btc-black: #000000;
+  --color-btc-white: #ffffff;
+  --color-btc-green: #00ff88;
+  --color-btc-amber: #ffcc66;
+  --color-btc-gold: #d4af37;
+  --color-btc-gray: #1a1a1a;
+  --color-btc-dim: #666666;
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-btc-black text-btc-white;
+    cursor: default;
+  }
+  
+  ::selection {
+    background: #00ff8833;
+    color: #ffffff;
+  }
+}
+
+/* Cinematic animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.95; }
+  75% { opacity: 0.98; }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+@keyframes glow {
+  0%, 100% { 
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+  50% { 
+    text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+  }
+}
+
+@keyframes countUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-10px) translateX(5px); }
+  50% { transform: translateY(-5px) translateX(-5px); }
+  75% { transform: translateY(-15px) translateX(3px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.animate-flicker {
+  animation: flicker 3s infinite;
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.animate-count-up {
+  animation: countUp 0.5s ease-out forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-1000 { animation-delay: 1s; }
+.delay-1500 { animation-delay: 1.5s; }
+.delay-2000 { animation-delay: 2s; }
+.delay-2500 { animation-delay: 2.5s; }
+.delay-3000 { animation-delay: 3s; }
+
+.animation-delay-500 { animation-delay: 0.5s; }
+.animation-delay-1000 { animation-delay: 1s; }
+.animation-delay-1500 { animation-delay: 1.5s; }
+.animation-delay-2000 { animation-delay: 2s; }
+
+/* Text glow effect */
+.text-glow-green {
+  text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff8866;
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 10px #ffcc66, 0 0 20px #ffcc6666;
+}
+
+.text-glow-white {
+  text-shadow: 0 0 10px #ffffff66, 0 0 20px #ffffff33;
+}
+
+/* Hover glow for navigation */
+.nav-link {
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+  color: #00ff88;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff88;
+}
